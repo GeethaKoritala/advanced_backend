@@ -1,4 +1,19 @@
 const fs = require('fs')
+const http = require('http')
+
+
+const server = http.createServer((req,res) =>(
+  const stream = fs.createReadStream('test.txt');
+  stream.pipe();
+))
+
+// const server = http.createServer((req,res) =>(
+//   fs.readFile('test.txt',(err, data) => {
+//     res.end(data);
+//   })
+// ))
+
+server.listen(3030);
 
 // fs.writeFile(
 //   'sample.txt',
@@ -19,10 +34,10 @@ const fs = require('fs')
 //   console.log('File updated!')
 // })
 
-fs.rename('sample.txt', 'test.txt', (err) => {
-  if (err) throw err
-  console.log('File name updated')
-})
+// fs.rename('sample.txt', 'test.txt', (err) => {
+//   if (err) throw err
+//   console.log('File name updated')
+// })
 
 // fs.unlink('test.txt', (err) => {
 //   if (err) throw err
