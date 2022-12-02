@@ -1,8 +1,10 @@
 const fs = require('fs')
 const http = require('http')
+const port = 5000
 
 let homeContent = ''
 let projectContent = ''
+let registrationContent = ''
 
 fs.readFile('home.html', (err, home) => {
   if (err) {
@@ -18,6 +20,13 @@ fs.readFile('project.html', (err, project) => {
   projectContent = project
 })
 
+fs.readFile('registration.html', (err, registration) => {
+  if (err) {
+    throw err
+  }
+  registrationContent = registration
+})
+
 http
   .createServer((request, response) => {
     const url = request.url
@@ -27,13 +36,17 @@ http
         response.write(projectContent)
         response.end()
         break
+      case '/registration':
+        response.write(registrationContent)
+        response.end()
+        break
       default:
         response.write(homeContent)
         response.end()
         break
     }
   })
-  .listen(3000)
+  .listen(port)
 
 // const args = require("minimist")(process.argv.slice(2),{
 //   alias: {
