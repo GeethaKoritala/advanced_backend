@@ -1,6 +1,6 @@
 const fs = require('fs')
 const http = require('http')
-const port = 5000
+const args = require('minimist')(process.argv.slice(2))
 
 let homeContent = ''
 let projectContent = ''
@@ -46,7 +46,7 @@ http
         break
     }
   })
-  .listen(port)
+  .listen(args.port)
 
 // const args = require("minimist")(process.argv.slice(2),{
 //   alias: {
