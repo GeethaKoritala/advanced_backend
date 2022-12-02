@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>REGISTRATION FORM</title>
+        <style>
+            *{
+                margin : 0;
+                padding : 0;
+                box-sizing: border-box;
+            }
+            body{
+                background : url("https://static.vecteezy.com/system/resources/previews/001/984/861/original/abstract-blue-geometric-circles-overlapping-background-with-light-blue-free-vector.jpg");
+                width: 100%;
+                height: 100%;
+            }
+            div.register {
+                width : 1000px;
+                margin : 200px auto 0px auto;
+                padding : 20px;
+                text-align : center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="register">
+            <h1>REGISTRATION FORM</h1>
+            <form id="register" method = "post">
+                <label>FIRST NAME : <input type="text" name="fname" placeholder="Enter your first name"></label>
+                <br><br>
+                <label>LAST NAME : <input type="text" name="lname" placeholder="Enter your last name"></label>
+                <br><br>
+                <label>EMAIL ID : <input type="text" name="email" placeholder="Enter your mail id"></label>
+                <br><br>
+                <label>AGE : <input type="number" name="age" placeholder="how old are you?"></label>
+                <br><br>
+                <label>GENDER : </label><br>
+                <input type="radio" name="gender"><span id="female">FEMALE</span>
+                <input type="radio" name="gender"><span id="male">MALE</span>
+                <br>
+                <input type="submit">
+            </form>
+
+
+        </div>
+    </body>
+</html>
