@@ -1,11 +1,65 @@
 const fs = require('fs')
 const http = require('http')
 
+let homeContent = ''
+let projectContent = ''
 
-const server = http.createServer((req,res) =>(
-  const stream = fs.createReadStream('test.txt');
-  stream.pipe();
-))
+fs.readFile('home.html', (err, home) => {
+  if (err) {
+    throw err
+  }
+  homeContent = home
+})
+
+fs.readFile('project.html', (err, project) => {
+  if (err) {
+    throw err
+  }
+  projectContent = project
+})
+
+http
+  .createServer((request, response) => {
+    const url = request.url
+    response.writeHeader(200, { 'Content-Type': 'text/html' })
+    switch (url) {
+      case '/project':
+        response.write(projectContent)
+        response.end()
+        break
+      default:
+        response.write(homeContent)
+        response.end()
+        break
+    }
+  })
+  .listen(3000)
+
+// const args = require("minimist")(process.argv.slice(2),{
+//   alias: {
+//     n:"name",
+//     a:"age",
+//   },
+//   default: {
+//     greeting: "Hello",
+//   },
+// });
+// console.log(args);
+
+// const readline = require("readline");
+// const lineDetail = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+// lineDetail.question(`Please provide your name - `, (name) => {
+//   console.log(`Hi ${name}!`);
+//   lineDetail.close();
+// });
+
+// const server = http.createServer((req,res) =>(
+//   const stream = fs.createReadStream('test.txt');
+//   stream.pipe();
+// ))
 
 // const server = http.createServer((req,res) =>(
 //   fs.readFile('test.txt',(err, data) => {
@@ -13,7 +67,7 @@ const server = http.createServer((req,res) =>(
 //   })
 // ))
 
-server.listen(3030);
+// server.listen(3030);
 
 // fs.writeFile(
 //   'sample.txt',
